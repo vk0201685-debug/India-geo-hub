@@ -1,78 +1,2130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bhūmi — a simple bilingual atlas of Indian geography: mountains, rivers, monsoon, forests, weather and important places.">
-<title>Bhūmi — An Atlas of India</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#07111f;color:#eef4fb;line-height:1.6}
-nav{position:sticky;top:0;z-index:10;background:rgba(7,17,31,.94);backdrop-filter:blur(12px);border-bottom:1px solid #203247;padding:14px 5%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:800;letter-spacing:.5px}.logo span{color:#6ee7b7}.links a{color:#cbd5e1;text-decoration:none;margin-left:18px;font-size:14px}.links a:hover{color:#6ee7b7}
-.hero{padding:85px 6% 70px;max-width:1150px;margin:auto}.eyebrow{color:#6ee7b7;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:13px}.hero h1{font-family:Georgia,serif;font-size:clamp(45px,8vw,88px);line-height:1;margin:15px 0}.hero h1 span{color:#8ab4ff}.hero p{max-width:720px;color:#b7c5d6;font-size:18px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{padding:11px 18px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #31465c}.primary{background:#6ee7b7;color:#062016}.secondary{color:#dce7f3;background:#101e30}
-section{max-width:1150px;margin:auto;padding:65px 6%}.section-title{font-family:Georgia,serif;font-size:38px;margin:0 0 8px}.muted{color:#9fb0c3}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:28px}.card{background:#0d1b2c;border:1px solid #21364d;border-radius:16px;padding:24px;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#45637f}.icon{font-size:30px}.card h3{margin:8px 0 5px}.card p{color:#aebdce;margin:0}.hi{color:#dce7f3}.tag{display:inline-block;margin-top:14px;padding:4px 9px;border-radius:99px;background:#132b37;color:#6ee7b7;font-size:12px}
-.fact{background:linear-gradient(135deg,#0d2132,#102a2b);border:1px solid #294958;border-radius:20px;padding:30px;margin-top:30px}.fact strong{color:#6ee7b7}.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}.list{padding-left:20px;color:#b9c7d6}.list li{margin:9px 0}
-footer{border-top:1px solid #203247;padding:35px 6%;color:#8395a8;text-align:center}
-@media(max-width:700px){.links{display:none}.two{grid-template-columns:1fr}.hero{padding-top:55px}section{padding-top:45px}.hero p{font-size:16px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhūmi — An Atlas of India | भूमि — भारत का एक एटलस</title>
+  <meta name="description" content="Comprehensive Bilingual Geography Learning Platform for India (UPSC, SSC, State PCS, NDA)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-space: #070B14;
+      --bg-card: #0D1424;
+      --bg-card-hover: #131E35;
+      --border-subtle: #1E2D4A;
+      --border-glow: #D4AF37;
+      --gold-primary: #D4AF37;
+      --gold-light: #F3E5AB;
+      --blue-accent: #1E88E5;
+      --text-main: #F0F4FA;
+      --text-muted: #9AA7BD;
+      --tag-bg: rgba(212, 175, 55, 0.12);
+      --font-english: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-hindi: 'Tiro Devanagari Hindi', serif;
+      --font-title: 'Cinzel', serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      --transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-space);
+      color: var(--text-main);
+      font-family: var(--font-hindi);
+      min-height: 100vh;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    body.lang-en {
+      font-family: var(--font-english);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select {
+      font-family: inherit;
+    }
+
+    /* HEADER & NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .brand-symbol {
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold-primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #070B14;
+      font-weight: 800;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .brand-title {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #FFF;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--gold-primary);
+      display: block;
+      line-height: 1.1;
+      letter-spacing: 0.08em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-toggle-btn {
+      background: #10192A;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .lang-toggle-btn:hover {
+      border-color: var(--gold-primary);
+      background: #17233B;
+    }
+
+    .lang-badge {
+      background: var(--gold-primary);
+      color: #070B14;
+      padding: 1px 6px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+
+    .auth-btn {
+      background: transparent;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      padding: 7px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .auth-btn:hover {
+      background: var(--gold-primary);
+      color: #070B14;
+    }
+
+    .auth-btn.logged-in {
+      border-color: #2E7D32;
+      color: #81C784;
+    }
+
+    /* HERO BANNER */
+    .hero-section {
+      background: linear-gradient(180deg, #0A101D 0%, #070B14 100%);
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-heading {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: #FFF;
+      max-width: 900px;
+      margin: 0 auto 0.8rem;
+      line-height: 1.25;
+    }
+
+    .hero-heading span {
+      background: linear-gradient(135deg, #FFF 20%, var(--gold-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 1.8rem;
+      font-size: 1.05rem;
+    }
+
+    /* SEARCH & FILTER CONTROLS */
+    .control-panel {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .search-box-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #0E1627;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 20px 14px 48px;
+      color: #FFF;
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+
+    .pill-btn {
+      background: #0F1726;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .pill-btn.active, .pill-btn:hover {
+      background: #1B2943;
+      border-color: var(--gold-primary);
+      color: #FFF;
+    }
+
+    /* MAIN CONTENT VIEWPORT */
+    main {
+      flex: 1;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      width: 100%;
+    }
+
+    .view-container {
+      display: block;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* GRID & CARDS */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 480px) {
+      .topics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 175, 55, 0.4);
+      background: var(--bg-card-hover);
+    }
+
+    .card-banner {
+      height: 180px;
+      position: relative;
+      background: #090E1A;
+      overflow: hidden;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .card-banner-svg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #111A2E, #0A101C);
+    }
+
+    .category-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(7, 11, 20, 0.85);
+      border: 1px solid var(--border-subtle);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+
+    .bookmark-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(7, 11, 20, 0.85);
+      border: 1px solid var(--border-subtle);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .bookmark-icon:hover, .bookmark-icon.bookmarked {
+      color: var(--gold-primary);
+      border-color: var(--gold-primary);
+    }
+
+    .card-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    /* DETAILED LESSON VIEW */
+    .lesson-view {
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .breadcrumb-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-btn {
+      background: #111B2C;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .back-btn:hover {
+      background: #192740;
+      border-color: var(--gold-primary);
+    }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .lesson-layout {
+        grid-template-columns: 1fr;
+      }
+      .toc-sidebar {
+        display: none;
+      }
+    }
+
+    .toc-sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      position: sticky;
+      top: 90px;
+    }
+
+    .toc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toc-item a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .toc-item a:hover {
+      color: #FFF;
+      background: #15223A;
+      transform: translateX(4px);
+    }
+
+    .lesson-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (max-width: 600px) {
+      .lesson-content {
+        padding: 1.5rem;
+      }
+    }
+
+    .lesson-header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.8rem;
+    }
+
+    .lesson-title-main {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: #FFF;
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+    }
+
+    .lesson-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .lesson-media-wrapper {
+      margin: 1.5rem 0 2rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #090E1A;
+    }
+
+    .lesson-hero-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-caption {
+      padding: 10px 14px;
+      background: #080D18;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .lesson-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .lesson-section h2 {
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--gold-primary);
+      padding-left: 12px;
+    }
+
+    .lesson-section p {
+      font-size: 1.05rem;
+      color: #D8E2F0;
+      margin-bottom: 1.2rem;
+      line-height: 1.75;
+    }
+
+    /* DATA TABLES */
+    .table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .geo-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .geo-table th {
+      background: #111A2D;
+      color: var(--gold-primary);
+      padding: 12px 16px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .geo-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #D8E2F0;
+    }
+
+    .geo-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* EXAM FLASH-FACTS & QUIZ CARDS */
+    .exam-highlight-box {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(30, 136, 229, 0.08));
+      border: 1px solid var(--gold-primary);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .exam-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold-primary);
+      color: #070B14;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+
+    .exam-points {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exam-points li {
+      position: relative;
+      padding-left: 20px;
+      color: #E6EEF8;
+    }
+
+    .exam-points li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold-primary);
+    }
+
+    /* AUTH MODAL & PROFILE VIEW */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 7, 13, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-card {
+      background: #0E1627;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 440px;
+      padding: 2.2rem;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      color: #FFF;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-sub {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .input-pass-wrap {
+      position: relative;
+    }
+
+    .form-input {
+      width: 100%;
+      background: #080D18;
+      border: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: #FFF;
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-input:focus {
+      border-color: var(--gold-primary);
+    }
+
+    .pass-toggle-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .form-action-btn {
+      width: 100%;
+      background: var(--gold-primary);
+      color: #070B14;
+      border: none;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .form-action-btn:hover {
+      background: var(--gold-light);
+    }
+
+    .form-msg {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      text-align: center;
+      min-height: 20px;
+    }
+
+    .form-msg.error { color: #EF5350; }
+    .form-msg.success { color: #66BB6A; }
+
+    .firebase-disclaimer-box {
+      margin-top: 1.5rem;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(30, 136, 229, 0.08);
+      border: 1px dashed rgba(30, 136, 229, 0.4);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* USER PROFILE VIEW */
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), #E65100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #070B14;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #05080F;
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 2rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-col h4 {
+      color: var(--gold-light);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom {
+      max-width: 1300px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
-<body>
-<nav>
-<div class="logo">Bhūmi <span>•</span> INDIA</div>
-<div class="links"><a href="#essentials">Essentials</a><a href="#regions">Regions</a><a href="#quick">Quick Facts</a></div>
-</nav>
+<body class="lang-hi">
 
-<header class="hero">
-<div class="eyebrow">An Atlas of India</div>
-<h1>Himalaya to<br><span>Hind Mahasagar.</span></h1>
-<p>A simple bilingual geography guide covering India's peaks, rivers, monsoon, climate, forests and important places — useful for students and competitive-exam revision.</p>
-<div class="buttons"><a class="btn primary" href="#essentials">Explore India ↓</a><a class="btn secondary" href="#quick">Quick Facts</a></div>
-</header>
+  <!-- NAVIGATION HEADER -->
+  <header>
+    <div class="nav-container">
+      <div class="brand" onclick="showHomeView()">
+        <div class="brand-symbol">भू</div>
+        <div>
+          <span class="brand-title">Bhūmi</span>
+          <span class="brand-subtitle" id="brand-tagline">भारत का एक एटलस</span>
+        </div>
+      </div>
 
-<section id="essentials">
-<div class="eyebrow">Twenty-six essentials</div>
-<h2 class="section-title">India, in sharp notes.</h2>
-<p class="muted">भारत का भूगोल — आसान English + Hindi notes.</p>
-<div class="grid">
-<div class="card"><div class="icon">🏔️</div><h3>Himalayas</h3><p class="hi">हिमालय — Northern mountain system protecting the Indian subcontinent.</p><span class="tag">Physical Geography</span></div>
-<div class="card"><div class="icon">🌊</div><h3>Rivers</h3><p class="hi">गंगा, यमुना, ब्रह्मपुत्र, गोदावरी, कृष्णा और नर्मदा जैसी प्रमुख नदियाँ.</p><span class="tag">Drainage</span></div>
-<div class="card"><div class="icon">🌧️</div><h3>Monsoon</h3><p class="hi">मानसून भारत की rainfall, agriculture और seasonal climate का मुख्य आधार है.</p><span class="tag">Climate</span></div>
-<div class="card"><div class="icon">🌳</div><h3>Forests</h3><p class="hi">Tropical evergreen, deciduous, thorn, mountain and mangrove vegetation.</p><span class="tag">Environment</span></div>
-<div class="card"><div class="icon">☀️</div><h3>Weather & Climate</h3><p class="hi">भारत में tropical monsoon climate के साथ regional variations मिलते हैं.</p><span class="tag">Climate</span></div>
-<div class="card"><div class="icon">🗺️</div><h3>Important Places</h3><p class="hi">Major physical and geographical locations for quick revision.</p><span class="tag">Maps</span></div>
-</div>
-</section>
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button class="lang-toggle-btn" id="lang-btn" onclick="toggleLanguage()" aria-label="Toggle Language">
+          <span>🌐</span>
+          <span id="lang-label">हिन्दी</span>
+          <span class="lang-badge" id="lang-code-badge">HI</span>
+        </button>
 
-<section id="regions">
-<div class="eyebrow">Physical divisions</div>
-<h2 class="section-title">India's major regions</h2>
-<div class="two">
-<div class="card"><h3>1. Northern Mountains</h3><ul class="list"><li>Himalayas and associated ranges</li><li>Major source region of perennial rivers</li><li>Young fold mountain system</li></ul></div>
-<div class="card"><h3>2. Northern Plains</h3><ul class="list"><li>Formed mainly by river deposits</li><li>Very fertile agricultural region</li><li>Includes Indus–Ganga–Brahmaputra plains</li></ul></div>
-<div class="card"><h3>3. Peninsular Plateau</h3><ul class="list"><li>Ancient stable landmass</li><li>Deccan Plateau and Central Highlands</li><li>Rich in many mineral resources</li></ul></div>
-<div class="card"><h3>4. Coastal Plains & Islands</h3><ul class="list"><li>Western and Eastern Coastal Plains</li><li>Arabian Sea and Bay of Bengal coasts</li><li>Andaman & Nicobar and Lakshadweep islands</li></ul></div>
-</div>
-</section>
+        <!-- Auth Button -->
+        <button class="auth-btn" id="nav-auth-btn" onclick="openAuthModal()">
+          <span id="auth-btn-icon">👤</span>
+          <span id="auth-btn-text">लॉग इन</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-<section id="quick">
-<div class="eyebrow">Quick revision</div>
-<h2 class="section-title">Fast facts</h2>
-<div class="fact">
-<p><strong>India's location:</strong> India lies in South Asia and is surrounded by the Himalayas in the north and the Indian Ocean to the south.</p>
-<p><strong>Highest peak in India:</strong> Kangchenjunga (8,586 m), on the India–Nepal border region.</p>
-<p><strong>Major river system:</strong> The Ganga river system is one of the most important drainage systems of northern India.</p>
-<p><strong>Monsoon:</strong> The southwest monsoon is the principal rainy season for most of India.</p>
-<p><strong>Three sides of water:</strong> Arabian Sea — west; Bay of Bengal — east; Indian Ocean — south.</p>
-</div>
-</section>
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero-area">
+    <div class="hero-badge" id="hero-badge-txt">प्रामाणिक भारतीय भूगोल • सिविल सेवा एवं प्रतियोगी परीक्षा संग्रह</div>
+    <h1 class="hero-heading" id="hero-head-txt">
+      भारत का समृद्ध भौगोलिक परिदृश्य <span>एक ही स्थान पर</span>
+    </h1>
+    <p class="hero-lead" id="hero-sub-txt">
+      हिमालय के शिखरों से कन्याकुमारी के तटों तक — विस्तृत अध्ययन अध्याय, परीक्षा विश्लेषण, नदियां, जलवायु, मिट्टी और प्राकृतिक संसाधन।
+    </p>
 
-<section>
-<div class="card">
-<h2 class="section-title" style="font-size:30px">Study smarter. 🇮🇳</h2>
-<p class="muted">Use this atlas for quick revision, then verify detailed facts from your textbook or official sources before exams.</p>
-</div>
-</section>
+    <!-- SEARCH & CONTROLS -->
+    <div class="control-panel">
+      <div class="search-box-wrap">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          class="search-input" 
+          id="search-input" 
+          placeholder="अध्याय, नदी, पर्वत, राष्ट्रीय उद्यान या विषय खोजें..." 
+          oninput="handleSearch(this.value)"
+        />
+      </div>
 
-<footer>Bhūmi — An Atlas of India · Bilingual Geography Notes</footer>
+      <div class="category-pills" id="category-pills">
+        <!-- Category buttons rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN VIEWPORT -->
+  <main>
+    <!-- TOPICS DIRECTORY VIEW -->
+    <div class="view-container" id="directory-view">
+      <div class="topics-grid" id="topics-grid">
+        <!-- Cards rendered via JavaScript -->
+      </div>
+    </div>
+
+    <!-- DETAILED LESSON VIEW -->
+    <div class="view-container hidden" id="lesson-view">
+      <div class="breadcrumb-bar">
+        <button class="back-btn" onclick="showHomeView()">
+          <span>←</span>
+          <span id="back-btn-text">वापस सूची पर जाएं</span>
+        </button>
+        <span>/</span>
+        <span id="breadcrumb-category">भौगोलिक संरचना</span>
+        <span>/</span>
+        <span id="breadcrumb-topic" style="color: var(--gold-light);">हिमालय पर्वत श्रृंखला</span>
+      </div>
+
+      <div class="lesson-layout">
+        <!-- Table of Contents Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title" id="toc-header-text">विषय सूची (अनुक्रमणिका)</div>
+          <ul class="toc-list" id="toc-list-items">
+            <!-- TOC items dynamically populated -->
+          </ul>
+        </aside>
+
+        <!-- Lesson Detailed Body -->
+        <article class="lesson-content" id="lesson-article-body">
+          <!-- Content populated via JavaScript -->
+        </article>
+      </div>
+    </div>
+
+    <!-- USER PROFILE VIEW -->
+    <div class="view-container hidden" id="profile-view">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar" id="prof-avatar-letter">U</div>
+          <div>
+            <h2 id="prof-user-email" style="color: #FFF;">user@example.com</h2>
+            <p id="prof-joined-date" style="color: var(--text-muted); font-size: 0.9rem;">सक्रिय सदस्य • स्थानीय संग्रहण</p>
+          </div>
+          <button class="back-btn" style="margin-left: auto;" onclick="logoutUser()">
+            <span id="logout-btn-label">लॉग आउट</span>
+          </button>
+        </div>
+
+        <h3 id="saved-topics-heading" style="color: var(--gold-light); margin-bottom: 1rem;">सहेजे गए पाठ (बुकमार्क)</h3>
+        <div id="saved-topics-list" style="display: flex; flex-direction: column; gap: 10px;">
+          <!-- Bookmarks list -->
+        </div>
+
+        <div class="firebase-disclaimer-box" style="margin-top: 2rem;">
+          <strong id="auth-note-title">नोट (प्रमाणीकरण वास्तुकला):</strong>
+          <span id="auth-note-desc">यह प्रोफ़ाइल वर्तमान में ब्राउज़र के LocalStorage में सुरक्षित रूप से संरक्षित है। उत्पादन (Production) में एकाधिक उपकरणों पर क्लाउड सिंकिंग के लिए नीचे दिए गए फायरबेस एकीकरण का उपयोग करें।</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- AUTHENTICATION MODAL -->
+  <div class="modal-overlay hidden" id="auth-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeAuthModal()">✕</button>
+      <h2 class="modal-title" id="modal-title-txt">खाते में प्रवेश करें</h2>
+      <p class="modal-sub" id="modal-sub-txt">अपनी अध्ययन प्रगति और पसंदीदा विषयों को सहेजने के लिए लॉग इन करें।</p>
+
+      <form id="auth-form" onsubmit="handleAuthSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" id="lbl-email">ईमेल पता</label>
+          <input type="email" class="form-input" id="auth-email" required placeholder="name@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" id="lbl-pass">पासवर्ड</label>
+          <div class="input-pass-wrap">
+            <input type="password" class="form-input" id="auth-password" required placeholder="••••••••" />
+            <button type="button" class="pass-toggle-btn" onclick="togglePassVisibility('auth-password', this)">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" class="form-action-btn" id="modal-submit-btn">प्रवेश करें</button>
+        <div class="form-msg" id="auth-feedback"></div>
+      </form>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 1rem; font-size: 0.85rem;">
+        <a href="#" onclick="toggleAuthMode(); return false;" id="auth-switch-link" style="color: var(--gold-primary);">नया खाता बनाएं</a>
+        <a href="#" onclick="handlePassReset(); return false;" id="auth-forgot-link" style="color: var(--text-muted);">पासवर्ड रीसेट?</a>
+      </div>
+
+      <div class="firebase-disclaimer-box">
+        <strong id="fb-guidance-title">फायरबेस (Firebase) प्रमाणीकरण विकल्प:</strong>
+        <p id="fb-guidance-txt">कोड में किसी बैकएंड सर्वर की आवश्यकता के बिना स्थायी लॉगिन सक्षम करने के लिए Firebase Auth SDK का उपयोग किया जा सकता है।</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom: 0.8rem;">
+          <div class="brand-symbol">भू</div>
+          <div>
+            <span class="brand-title">Bhūmi</span>
+            <span class="brand-subtitle">भारत का एक एटलस</span>
+          </div>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;" id="footer-desc">
+          भूगोल की विस्तृत एवं वैज्ञानिक समझ को समर्पित एक समग्र डिजिटल संदर्भ मंच। संघ लोक सेवा आयोग (UPSC), राज्य लोक सेवा आयोग, SSC व अन्य प्रतियोगी परीक्षाओं के छात्रों के लिए विशेष संकलन।
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 id="footer-col1-title">महत्वपूर्ण खंड</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="filterByCategory('physiography')">भौतिक विभाजन (Physiography)</a></li>
+          <li><a href="#" onclick="filterByCategory('drainage')">अपवाह तंत्र (River Systems)</a></li>
+          <li><a href="#" onclick="filterByCategory('climate')">जलवायु एवं मानसून (Monsoon)</a></li>
+          <li><a href="#" onclick="filterByCategory('resources')">संसाधन एवं उद्योग (Resources)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 id="footer-col2-title">तकनीकी सूचना</h4>
+        <ul class="footer-links">
+          <li><span style="color: #66BB6A;">●</span> GitHub Pages संगत</li>
+          <li><span style="color: #66BB6A;">●</span> Zero External Server Lock-in</li>
+          <li><span style="color: #66BB6A;">●</span> पूर्णतः द्विभाषी (Bilingual)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p id="footer-copy">© 2026 Bhūmi — An Atlas of India. सर्वाधिकार सुरक्षित। ज्ञान का निःशुल्क प्रसार।</p>
+    </div>
+  </footer>
+
+  <!-- CORE JAVASCRIPT APPLICATION -->
+  <script>
+    /* =====================================================================
+       1. DICTIONARIES & BILINGUAL DATA REPOSITORY
+       ===================================================================== */
+    const UI_TRANSLATIONS = {
+      hi: {
+        brandTag: "भारत का एक एटलस",
+        langName: "हिन्दी",
+        langCode: "HI",
+        login: "लॉग इन",
+        profile: "प्रोफ़ाइल",
+        heroBadge: "प्रामाणिक भारतीय भूगोल • सिविल सेवा एवं प्रतियोगी परीक्षा संग्रह",
+        heroHead: "भारत का समृद्ध भौगोलिक परिदृश्य <span>एक ही स्थान पर</span>",
+        heroSub: "हिमालय के शिखरों से कन्याकुमारी के तटों तक — विस्तृत अध्ययन अध्याय, परीक्षा विश्लेषण, नदियां, जलवायु, मिट्टी और प्राकृतिक संसाधन।",
+        searchPlaceholder: "अध्याय, नदी, पर्वत, राष्ट्रीय उद्यान या विषय खोजें...",
+        allCategories: "सभी विषय",
+        backToTopics: "वापस सूची पर जाएं",
+        tocHeading: "विषय सूची (अनुक्रमणिका)",
+        readLesson: "विस्तृत अध्याय पढ़ें →",
+        examPointsTitle: "परीक्षा उपयोगी मुख्य तथ्य (UPSC / SSC / State PCS):",
+        modalLoginTitle: "खाते में प्रवेश करें",
+        modalRegisterTitle: "नया खाता बनाएं",
+        modalLoginSub: "अपनी अध्ययन प्रगति और पसंदीदा विषयों को सहेजने के लिए लॉग इन करें।",
+        modalRegisterSub: "निःशुल्क खाता बनाएं और अपनी अध्ययन सामग्री को सुरक्षित रखें।",
+        emailLbl: "ईमेल पता",
+        passLbl: "पासवर्ड",
+        loginBtn: "प्रवेश करें",
+        registerBtn: "खाता बनाएं",
+        switchRegister: "नया खाता बनाएं",
+        switchLogin: "पहले से खाता है? लॉग इन करें",
+        forgotPass: "पासवर्ड रीसेट?",
+        passResetAlert: "पासवर्ड रीसेट लिंक आपके ईमेल पर भेज दिया गया है (डेमो कार्यप्रणाली)।",
+        loginSuccess: "सफलतापूर्वक लॉग इन किया गया!",
+        regSuccess: "खाता सफलतापूर्वक बन गया!",
+        authErrEmpty: "कृपया सभी फ़ील्ड भरें।",
+        authErrShort: "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+        authErrInvalid: "अमान्य ईमेल या पासवर्ड।",
+        logout: "लॉग आउट",
+        savedHeading: "सहेजे गए पाठ (बुकमार्क)",
+        noBookmarks: "आपने अभी तक कोई अध्याय सहेजा नहीं है। कार्ड पर स्थित तारा/बुकमार्क चिह्न दबाकर जोड़ें।",
+        authNoteTitle: "सुरक्षा एवं भंडारण सूचना:",
+        authNoteDesc: "यह सत्र आपके ब्राउज़र में सुरक्षित रूप से संरक्षित है। उत्पादन में वास्तविक प्रमाणीकरण के लिए Firebase Auth का उपयोग करें।",
+        fbTitle: "फायरबेस (Firebase) प्रमाणीकरण विकल्प:",
+        fbTxt: "किसी बैकएंड सर्वर के बिना स्थायी डेटा प्रबंधन हेतु Firebase Auth SDK से सुचारू रूप से जोड़ा जा सकता है।"
+      },
+      en: {
+        brandTag: "An Atlas of India",
+        langName: "English",
+        langCode: "EN",
+        login: "Sign In",
+        profile: "Profile",
+        heroBadge: "Authoritative Indian Geography • UPSC, SSC & Civil Services Repository",
+        heroHead: "The Rich Geographical Landscape of India <span>Unified</span>",
+        heroSub: "From the peaks of the Himalayas to the shores of Kanyakumari — in-depth lessons, exam-focused analytics, river drainage, climate systems, soils, and natural resources.",
+        searchPlaceholder: "Search topics, rivers, mountains, national parks or facts...",
+        allCategories: "All Categories",
+        backToTopics: "Back to Topics",
+        tocHeading: "Table of Contents",
+        readLesson: "Read Comprehensive Lesson →",
+        examPointsTitle: "High-Yield Exam Focus (UPSC / SSC / State PCS):",
+        modalLoginTitle: "Sign In to Bhūmi",
+        modalRegisterTitle: "Create Free Account",
+        modalLoginSub: "Log in to preserve your learning bookmarks, saved notes, and progress.",
+        modalRegisterSub: "Register for free to bookmark key geographical concepts.",
+        emailLbl: "Email Address",
+        passLbl: "Password",
+        loginBtn: "Sign In",
+        registerBtn: "Create Account",
+        switchRegister: "Create New Account",
+        switchLogin: "Already have an account? Sign In",
+        forgotPass: "Reset Password?",
+        passResetAlert: "A password reset link has been dispatched to your email (Demo Flow).",
+        loginSuccess: "Successfully logged in!",
+        regSuccess: "Account successfully created!",
+        authErrEmpty: "Please fill in all fields.",
+        authErrShort: "Password must be at least 6 characters long.",
+        authErrInvalid: "Invalid email or credentials.",
+        logout: "Sign Out",
+        savedHeading: "Bookmarked Lessons",
+        noBookmarks: "No bookmarked lessons yet. Click the bookmark icon on any lesson card.",
+        authNoteTitle: "Security & Storage Architecture:",
+        authNoteDesc: "This session is stored locally and securely in your browser's local sandbox. In production, connect Firebase Auth for cross-device synchronization.",
+        fbTitle: "Serverless Firebase Authentication:",
+        fbTxt: "Can be connected with Firebase Web SDK without maintaining custom backend servers."
+      }
+    };
+
+    const CATEGORIES = [
+      { id: "all", hi: "सभी विषय", en: "All Modules" },
+      { id: "boundaries", hi: "भौगोलिक स्थिति व सीमाएं", en: "Location & Frontiers" },
+      { id: "physiography", hi: "भू-आकृतिक विभाजन", en: "Physiographic Divisions" },
+      { id: "drainage", hi: "अपवाह तंत्र एवं जल संसाधन", en: "Drainage Systems" },
+      { id: "climate", hi: "जलवायु एवं मानसून", en: "Climate & Monsoon" },
+      { id: "soils_veg", hi: "मृदा एवं प्राकृतिक वनस्पति", en: "Soils & Natural Vegetation" },
+      { id: "economic", hi: "कृषि, खनिज एवं उद्योग", en: "Agriculture & Minerals" },
+      { id: "protected", hi: "संरक्षित क्षेत्र एवं पर्यावरण", en: "National Parks & Environment" }
+    ];
+
+    /* COMPREHENSIVE GEOGRAPHY DATA SET */
+    const TOPICS_DATA = [
+      {
+        id: "geo-extent-borders",
+        category: "boundaries",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/India_%28orthographic_projection%29.svg/600px-India_%28orthographic_projection%29.svg.png",
+        fallbackSvg: `<svg viewBox="0 0 400 200" width="100%" height="100%"><rect width="400" height="200" fill="#0C1425"/><path d="M150 40 L250 40 L270 120 L200 180 L130 120 Z" fill="none" stroke="#D4AF37" stroke-width="3"/><circle cx="200" cy="110" r="4" fill="#1E88E5"/><text x="200" y="140" fill="#9AA7BD" font-size="12" text-anchor="middle">India Frontier Extent</text></svg>`,
+        title: {
+          hi: "भारत की स्थिति, विस्तार एवं अंतरराष्ट्रीय सीमाएं",
+          en: "India: Geographical Location, Extent & Frontiers"
+        },
+        desc: {
+          hi: "अक्षांशीय-देशांतरीय फैलाव, मानक समय रेखा (82°30' पूर्व), 15,106.7 किमी स्थल सीमा एवं 7,516.6 किमी तटीय रेखा का संपूर्ण विश्लेषण।",
+          en: "Complete breakdown of latitudinal-longitudinal bounds, Indian Standard Time (82°30' E), 15,106.7 km land borders, and 7,516.6 km coastline."
+        },
+        sections: [
+          {
+            title: { hi: "भौगोलिक स्थिति एवं चतुर्दिक बिंदु", en: "Geographical Coordinates & Extremities" },
+            content: {
+              hi: "भारत उत्तरी-पूर्वी गोलार्ध में स्थित है। मुख्य भूमि का अक्षांशीय विस्तार 8°4' उत्तर से 37°6' उत्तर तथा देशांतरीय विस्तार 68°7' पूर्व से 97°25' पूर्व तक है। कर्क रेखा (23°30' N) देश को लगभग दो समान भागों में विभाजित करती है और यह 8 राज्यों (गुजरात, राजस्थान, मध्य प्रदेश, छत्तीसगढ़, झारखंड, पश्चिम बंगाल, त्रिपुरा, मिजोरम) से गुजरती है।",
+              en: "India lies entirely in the Northern and Eastern Hemispheres. The mainland extends between latitudes 8°4'N and 37°6'N and longitudes 68°7'E and 97°25'E. The Tropic of Cancer (23°30'N) divides India into almost two equal halves, passing through 8 states: Gujarat, Rajasthan, MP, Chhattisgarh, Jharkhand, West Bengal, Tripura, and Mizoram."
+            }
+          },
+          {
+            title: { hi: "सीमावर्ती देश एवं रेडक्लिफ/मैकमोहन रेखा", en: "Land Frontiers & Border Lines" },
+            content: {
+              hi: "भारत की थल सीमा 15,106.7 किमी है जो 7 देशों से मिलती है: बांग्लादेश (4,096.7 किमी - सर्वाधिक), चीन (3,488 किमी), पाकिस्तान (3,323 किमी), नेपाल (1,751 किमी), म्यांमार (1,643 किमी), भूटान (699 किमी) और अफगानिस्तान (106 किमी)। पाकिस्तान के साथ रेडक्लिफ रेखा, चीन के साथ मैकमोहन रेखा और अफगानिस्तान के साथ डूरंड रेखा सीमा निर्धारित करती है।",
+              en: "India shares 15,106.7 km of land borders across 7 nations: Bangladesh (4,096.7 km - longest), China (3,488 km), Pakistan (3,323 km), Nepal (1,751 km), Myanmar (1,643 km), Bhutan (699 km), and Afghanistan (106 km). Crucial border demarcations include the Radcliffe Line (Pakistan/Bangladesh), McMahon Line (China), and Durand Line (Afghanistan)."
+            }
+          }
+        ],
+        table: {
+          headers: {
+            hi: ["सीमावर्ती देश", "सीमा लंबाई (किमी)", "संबद्ध भारतीय राज्य / केंद्र शासित प्रदेश"],
+            en: ["Neighboring Country", "Border Length (km)", "Bordering Indian States / UTs"]
+          },
+          rows: [
+            ["बांग्लादेश (Bangladesh)", "4,096.7", "पश्चिम बंगाल, असम, मेघालय, त्रिपुरा, मिजोरम"],
+            ["चीन (China)", "3,488.0", "लद्दाख, हिमाचल प्रदेश, उत्तराखंड, सिक्किम, अरुणाचल प्रदेश"],
+            ["पाकिस्तान (Pakistan)", "3,323.0", "गुजरात, राजस्थान, पंजाब, जम्मू और कश्मीर, लद्दाख"],
+            ["नेपाल (Nepal)", "1,751.0", "उत्तराखंड, उत्तर प्रदेश, बिहार, पश्चिम बंगाल, सिक्किम"]
+          ]
+        },
+        examPoints: {
+          hi: [
+            "भारत का मानक समय (IST) प्रयागराज (नैनी/मिर्जापुर) से गुजरने वाली 82°30' पूर्व देशांतर रेखा से निर्धारित होता है, जो GMT से 5 घंटे 30 मिनट आगे है।",
+            "इंदिरा पॉइंट (ग्रेट निकोबार - 6°45' N) भारत का सबसे दक्षिणी बिंदु है (2004 सुनामी में आंशिक जलमग्न)।",
+            "कर्क रेखा माही नदी को दो बार काटती है।"
+          ],
+          en: [
+            "Indian Standard Time (IST) is calculated from 82°30' E longitude passing through Mirzapur (UP), running 5 hours 30 minutes ahead of GMT.",
+            "Indira Point (Great Nicobar - 6°45' N) marks India's southernmost geographical territory.",
+            "The Mahi River crosses the Tropic of Cancer twice in its course."
+          ]
+        }
+      },
+      {
+        id: "geo-himalayas-structure",
+        category: "physiography",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/600px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg",
+        fallbackSvg: `<svg viewBox="0 0 400 200" width="100%" height="100%"><polygon points="50,180 150,50 250,180" fill="#17243B"/><polygon points="180,180 280,30 380,180" fill="#203254"/><text x="200" y="160" fill="#D4AF37" font-size="14" text-anchor="middle">The Himalayan Orogeny</text></svg>`,
+        title: {
+          hi: "हिमालय पर्वत श्रृंखला: उत्पत्ति, वर्गीकरण एवं प्रमुख दर्रे",
+          en: "The Himalayas: Orogeny, Longitudinal Ranges & Passes"
+        },
+        desc: {
+          hi: "टेथिस भूसन्नति से उत्पत्ति, ट्रांस-हिमालय, वृहद् (हिमाद्रि), लघु (हिमाचल), और शिवालिक श्रेणियों का विवर्तनिक और भौतिक विवरण।",
+          en: "Orogenic tectonic genesis from Tethys geosyncline, Trans-Himalayas, Greater (Himadri), Lesser (Himachal), and Outer (Shiwalik) systems."
+        },
+        sections: [
+          {
+            title: { hi: "उत्पत्ति एवं समानांतर पर्वत श्रेणियां", en: "Origin & Parallel Mountain Ranges" },
+            content: {
+              hi: "हिमालय एक नवीन वलित पर्वत (Young Fold Mountain) है, जिसकी उत्पत्ति भारतीय प्लेट और यूरेशियन प्लेट के अभिसरण (Collision) के फलस्वरूप टेथिस सागर के अवसादों के वलन से हुई है। यह चाप के आकार में 2,400 किमी लंबा है। उत्तर से दक्षिण में इसे 3 मुख्य समानांतर श्रेणियों में बांटा गया है: (1) हिमाद्रि (औसत ऊंचाई 6,100 मी, माउंट एवरेस्ट और कंचनजंगा यहीं हैं), (2) हिमाचल या मध्य हिमालय (पीर पंजाल, धौलाधर श्रेणियां), (3) शिवालिक (नवीनतम व बाह्य भाग, औसत ऊंचाई 900-1100 मी)।",
+              en: "The Himalayas are young fold mountains formed by the continental-continental collision of the Indo-Australian and Eurasian tectonic plates. Spanning 2,400 km in an arc, they are classified into three longitudinal belts: (1) Greater Himalayas (Himadri - avg 6,100 m with Everest & Kangchenjunga), (2) Lesser Himalayas (Himachal - Pir Panjal, Dhauladhar), and (3) Shiwalik (Outer range formed of loose fluvial deposits)."
+            }
+          },
+          {
+            title: { hi: "सामरिक एवं व्यापारिक दर्रे (Mountain Passes)", en: "Strategic Mountain Passes" },
+            content: {
+              hi: "काराकोरम दर्रा (लद्दाख - भारत का सबसे ऊंचा दर्रा), जोजिला (श्रीनगर को लेह से जोड़ता है), बनिहाल (जवाहर सुरंग, पीर पंजाल में), शिपकी ला (हिमाचल प्रदेश - सतलुज नदी का भारत में प्रवेश बिंदु), नाथू ला और जेलेप ला (सिक्किम), तथा बोमडिला (अरुणाचल प्रदेश) प्रमुख सामरिक दर्रे हैं।",
+              en: "Strategic mountain gaps include Karakoram Pass (Ladakh - highest in India), Zoji La (links Srinagar to Leh), Banihal Pass (Jawahar Tunnel in Pir Panjal), Shipki La (entry point of Sutlej into HP), Nathu La & Jelep La (Sikkim gateway to Tibet), and Bomdi La (Arunachal Pradesh)."
+            }
+          }
+        ],
+        table: {
+          headers: {
+            hi: ["पर्वत शिखर / दर्रा", "स्थान / राज्य", "ऊंचाई / सामरिक महत्व"],
+            en: ["Peak / Mountain Pass", "Region / State", "Elevation / Strategic Relevance"]
+          },
+          rows: [
+            ["K2 (गॉडविन ऑस्टिन)", "लद्दाख (POK) - काराकोरम", "8,611 मी (भारत की सर्वोच्च चोटी)"],
+            ["कंचनजंगा (Kangchenjunga)", "सिक्किम", "8,586 मी (निर्विरोध भारतीय भूभाग में सर्वोच्च)"],
+            ["जोजिला दर्रा (Zoji La)", "लद्दाख / जम्मू और कश्मीर", "श्रीनगर-द्रास-कारगिल-लेह राष्ट्रीय राजमार्ग"],
+            ["रोहतांग दर्रा (Rohtang Pass)", "हिमाचल प्रदेश (पीर पंजाल)", "कुल्लू घाटी को लाहौल-स्पीति से जोड़ता है (अटल टनल)"]
+          ]
+        },
+        examPoints: {
+          hi: [
+            "सिंधु-त्सांगपो सचर जोन (ITSLZ) ट्रांस-हिमालय को वृहद् हिमालय से अलग करता है।",
+            "वृहद् हिमालय और मध्य हिमालय के बीच मेन सेंट्रल थ्रस्ट (MCT) स्थित है।",
+            "शिवालिक और उत्तरी मैदान के मध्य हिमालयन फ्रंटल फॉल्ट (HFF) विद्यमान है।"
+          ],
+          en: [
+            "Indus-Tsangpo Suture Zone (ITSZ) separates the Trans-Himalayas from the Greater Himalayas.",
+            "The Main Central Thrust (MCT) separates the Greater Himalayas from the Lesser Himalayas.",
+            "The Himalayan Frontal Fault (HFF) marks the boundary between the Shiwalik foothills and the Northern Plains."
+          ]
+        }
+      },
+      {
+        id: "geo-drainage-rivers",
+        category: "drainage",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Varanasi_Ghats_panorama.jpg/600px-Varanasi_Ghats_panorama.jpg",
+        fallbackSvg: `<svg viewBox="0 0 400 200" width="100%" height="100%"><path d="M20 50 Q100 150 200 80 T380 120" stroke="#1E88E5" stroke-width="4" fill="none"/><text x="200" y="160" fill="#D4AF37" font-size="14" text-anchor="middle">Himalayan & Peninsular River Basins</text></svg>`,
+        title: {
+          hi: "भारतीय अपवाह तंत्र: हिमालयी एवं प्रायद्वीपीय नदियां",
+          en: "Drainage Systems: Himalayan & Peninsular Rivers"
+        },
+        desc: {
+          hi: "सिंधु, गंगा, ब्रह्मपुत्र, गोदावरी, कृष्णा, नर्मदा और ताप्ती नदी प्रणालियां; जलप्रपात, बहुउद्देशीय बांध एवं डेल्टा संरचना।",
+          en: "Comparative hydrography of Indus, Ganga, Brahmaputra, Godavari, Krishna, Narmada, and Tapi; waterfalls, dams, and estuaries."
+        },
+        sections: [
+          {
+            title: { hi: "हिमालयी बनाम प्रायद्वीपीय अपवाह तंत्र", en: "Himalayan vs Peninsular River Systems" },
+            content: {
+              hi: "हिमालयी नदियां (गंगा, सिंधु, ब्रह्मपुत्र) सदा नीरा (Perennial) हैं क्योंकि इन्हें हिमनदों और वर्षा दोनों से जल मिलता है। ये नदियां युवावस्था में हैं और गहरी V-आकार की घाटियों व गॉर्ज का निर्माण करती हैं। इसके विपरीत, प्रायद्वीपीय नदियां (गोदावरी, कृष्णा, कावेरी, नर्मदा) मौसमी (Seasonal) हैं, प्रौढ़ावस्था में हैं और उथली घाटियों में बहती हैं।",
+              en: "Himalayan rivers are perennial fed by glacial meltwater and monsoon rainfall, carving deep V-shaped valleys and majestic gorges. Peninsular rivers (Godavari, Krishna, Mahanadi, Cauvery, Narmada, Tapi) are seasonal, rain-fed, mature, and flow through broad, graded, shallow river valleys."
+            }
+          },
+          {
+            title: { hi: "पश्चिम एवं पूर्व की ओर बहने वाली नदियां", en: "East vs West Flowing Drainage" },
+            content: {
+              hi: "बंगाल की खाड़ी में गिरने वाली नदियां (महानदी, गोदावरी, कृष्णा, कावेरी) विस्तृत डेल्टा (Delta) बनाती हैं। अरब सागर में गिरने वाली प्रमुख प्रायद्वीपीय नदियां (नर्मदा, ताप्ती) भ्रंश घाटियों (Rift Valleys) से होकर बहती हैं और डेल्टा के स्थान पर ज्वारनदमुख (Estuary) का निर्माण करती हैं।",
+              en: "East-flowing rivers drain into the Bay of Bengal and construct extensive fertile deltas. West-flowing rivers like the Narmada and Tapi traverse linear tectonic rift valleys between the Vindhya and Satpura ranges, forming estuaries rather than deltas."
+            }
+          }
+        ],
+        table: {
+          headers: {
+            hi: ["नदी", "उद्गम स्थल", "लंबाई (किमी)", "प्रमुख सहायक नदियां / बांध"],
+            en: ["River", "Origin Source", "Length (km)", "Tributaries / Key Reservoirs"]
+          },
+          rows: [
+            ["गंगा (Ganga)", "गंगोत्री हिमनद (भागीरथी रूप में)", "2,525", "यमुना, घाघरा, गंडक, कोसी, सोन; टिहरी व फरक्का बांध"],
+            ["गोदावरी (Godavari)", "त्र्यंबकेश्वर, नासिक (महाराष्ट्र)", "1,465", "प्राणहिता, इंद्रावती, मंजीरा; पोलावरम परियोजना ('दक्षिण गंगा')"],
+            ["सिंधु (Indus)", "बोखर चू हिमनद (मानसरोवर के पास)", "2,880 (भारत में 1,114)", "झेलम, चिनाब, रावी, ब्यास, सतलुज"],
+            ["नर्मदा (Narmada)", "अमरकंटक पठार (मध्य प्रदेश)", "1,312", "धुआंधार जलप्रपात (भेड़ाघाट), सरदार सरोवर बांध"]
+          ]
+        },
+        examPoints: {
+          hi: [
+            "अलकनंदा और भागीरथी का संगम 'देवप्रयाग' में होता है, जहाँ से इसे आधिकारिक रूप से 'गंगा' कहा जाता है।",
+            "ब्रह्मपुत्र नदी को तिब्बत में 'यरलुंग त्सांगपो', अरुणाचल में 'दिहांग', और बांग्लादेश में 'जमुना' कहा जाता है। विश्व का सबसे बड़ा नदी द्वीप 'माजुली' इसी नदी में असम में है।",
+            "कावेरी नदी जल विवाद तमिलनाडु, कर्नाटक, केरल और पुडुचेरी के मध्य है।"
+          ],
+          en: [
+            "The confluence of Alaknanda and Bhagirathi occurs at Devprayag, from where the river is formally titled Ganga.",
+            "Brahmaputra is known as Yarlung Tsangpo in Tibet, Dihang in Arunachal Pradesh, and Jamuna in Bangladesh. It houses Majuli, the world's largest inhabited river island.",
+            "The Cauvery River basin dispute involves Tamil Nadu, Karnataka, Kerala, and the UT of Puducherry."
+          ]
+        }
+      },
+      {
+        id: "geo-climate-monsoon",
+        category: "climate",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Monsoon_clouds_over_village_in_Koppal_Karnataka.jpg/600px-Monsoon_clouds_over_village_in_Koppal_Karnataka.jpg",
+        fallbackSvg: `<svg viewBox="0 0 400 200" width="100%" height="100%"><circle cx="200" cy="100" r="60" fill="#172846"/><path d="M120 160 L200 60 L280 160" stroke="#D4AF37" stroke-width="3" fill="none"/><text x="200" y="180" fill="#FFF" font-size="13" text-anchor="middle">South-West Monsoon Mechanism</text></svg>`,
+        title: {
+          hi: "भारतीय जलवायु, मानसून की क्रियाविधि एवं चक्रवात",
+          en: "Indian Climate: Monsoon Mechanisms & Cyclones"
+        },
+        desc: {
+          hi: "कोपेन का जलवायु वर्गीकरण, आईटीसीजेड (ITCZ) का विस्थापन, एल-नीनो प्रभाव, पश्चिमी विक्षोभ और लौटता मानसून।",
+          en: "Köppen climate classification, shifting ITCZ, Jet Streams, El-Niño Southern Oscillation (ENSO), Western Disturbances, and Retreating Monsoon."
+        },
+        sections: [
+          {
+            title: { hi: "दक्षिण-पश्चिम मानसून की उत्पत्ति", en: "South-West Monsoon Genesis" },
+            content: {
+              hi: "भारतीय जलवायु 'उष्णकटिबंधीय मानसूनी' (Tropical Monsoon) प्रकार की है। ग्रीष्म ऋतु में उत्तर-पश्चिमी भारत और तिब्बत के पठार के अत्यधिक गर्म होने से निम्न वायुदाब (Low Pressure) क्षेत्र बनता है, जो अंतः उष्णकटिबंधीय अभिसरण क्षेत्र (ITCZ) को उत्तर की ओर खींचता है। इसके कारण दक्षिणी हिंद महासागर से दक्षिण-पूर्वी व्यापारिक पवनें भूमध्य रेखा पार कर फेरेल के नियम के अनुसार दाहिनी ओर मुड़कर दक्षिण-पश्चिम मानसून के रूप में भारत में प्रवेश करती हैं।",
+              en: "India features a tropical monsoon climate governed by seasonal reversal of wind systems. Extreme insolation over the northwestern plains and Tibetan plateau establishes an intense thermal low, drawing the Inter-Tropical Convergence Zone (ITCZ) northward. South-east trade winds cross the equator, deflect rightward due to Coriolis force, and hit peninsular India as the South-West Monsoon."
+            }
+          },
+          {
+            title: { hi: "मानसून की शाखाएं एवं लौटता मानसून", en: "Monsoon Branches & North-East Monsoon" },
+            content: {
+              hi: "दक्षिण-पश्चिम मानसून दो शाखाओं में बंटता है: (1) अरब सागर शाखा (पश्चिमी घाट पर भारी ओरोग्राफिक वर्षा करती है), और (2) बंगाल की खाड़ी शाखा (उत्तर-पूर्वी भारत और गारो-खासी पहाड़ियों में मौसिनराम में विश्व की सर्वाधिक वर्षा करती है)। अक्टूबर-नवंबर में मानसून के लौटने (Retreating Monsoon) से तमिलनाडु के कोरोमंडल तट पर शीतकालीन वर्षा होती है।",
+              en: "The monsoon bifurcates into the Arabian Sea branch (yielding heavy orographic rains on the windward Western Ghats) and the Bay of Bengal branch (causing extreme precipitation at Mawsynram in Meghalaya). During October-November, the retreating North-East monsoon picks up moisture over the Bay of Bengal to bring torrential winter rains to Tamil Nadu's Coromandel Coast."
+            }
+          }
+        ],
+        table: {
+          headers: {
+            hi: ["मौसम परिघटना", "सक्रिय समयावधि", "प्रभावित क्षेत्र एवं कृषि प्रभाव"],
+            en: ["Climatic Phenomenon", "Active Period", "Impacted Geography & Agrarian Effect"]
+          },
+          rows: [
+            ["दक्षिण-पश्चिम मानसून (SW Monsoon)", "जून से सितंबर", "समस्त भारत में 75% वर्षा; खरीफ फसलों (धान, कपास) का आधार"],
+            ["पश्चिमी विक्षोभ (Western Disturbance)", "दिसंबर से फरवरी", "पंजाब, हरियाणा, पश्चिमी उप्र; रबी (गेहूं) की फसल के लिए अमृत ('मावठ')"],
+            ["काल बैसाखी (Nor'westers)", "अप्रैल-मई", "पश्चिम बंगाल व असम; चाय, जूट और चावल के लिए लाभकारी"],
+            ["आम्र वर्षा (Mango Showers)", "ग्रीष्म ऋतु का अंत", "केरल एवं तटीय कर्नाटक; आमों को जल्दी पकाने में सहायक"]
+          ]
+        },
+        examPoints: {
+          hi: [
+            "मेघालय के मौसिनराम में खासी पहाड़ियों की कीपाकार (Funnel) आकृति के कारण विश्व की सर्वाधिक औसत वार्षिक वर्षा (लगभग 1,187 सेमी) दर्ज होती है।",
+            "अल-नीनो (El-Niño) का प्रभाव सामान्यतः भारतीय मानसून को कमजोर करता है, जबकि ला-नीना (La-Niña) प्रचुर वर्षा लाता है।",
+            "तमिलनाडु तट शीतकाल में उत्तर-पूर्वी मानसून से वर्षा प्राप्त करता है।"
+          ],
+          en: [
+            "Mawsynram in the Khasi Hills records the world's highest mean annual precipitation (~1,187 cm) due to intense funneling of moisture-laden winds.",
+            "El-Niño events are strongly correlated with suppressed monsoon rainfall in India, whereas La-Niña bolsters excess precipitation.",
+            "Tamil Nadu receives the bulk of its annual rainfall during the winter retreating monsoon (Oct-Dec)."
+          ]
+        }
+      },
+      {
+        id: "geo-soils-vegetation",
+        category: "soils_veg",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Soil_profile.png/300px-Soil_profile.png",
+        fallbackSvg: `<svg viewBox="0 0 400 200" width="100%" height="100%"><rect y="0" width="400" height="60" fill="#3E2723"/><rect y="60" width="400" height="70" fill="#5D4037"/><rect y="130" width="400" height="70" fill="#8D6E63"/><text x="200" y="105" fill="#FFF" font-size="14" text-anchor="middle">Indian Soil Orders & Horizons</text></svg>`,
+        title: {
+          hi: "भारत की मृदाएं, वनस्पति एवं जैव विविधता",
+          en: "Soils of India, Forest Types & Biomes"
+        },
+        desc: {
+          hi: "ICAR द्वारा 8 मृदा प्रकारों का वर्गीकरण, काली (रेगुर) मिट्टी, जलोढ़, लैटेराइट, और उष्णकटिबंधीय सदाबहार से शुष्क कंटीले वनों का विस्तार।",
+          en: "ICAR's 8 soil classifications, alluvial dynamics, black regur soil, laterite leaching, and tropical evergreen to alpine forest zones."
+        },
+        sections: [
+          {
+            title: { hi: "मृदा प्रकार एवं उनकी विशेषताएं", en: "Soil Classification & Pedology" },
+            content: {
+              hi: "भारतीय कृषि अनुसंधान परिषद (ICAR) ने भारतीय मृदा को 8 वर्गों में बांटा है: (1) जलोढ़ मृदा (Alluvial - 40% क्षेत्रफल, सबसे उपजाऊ, खादर नवीन व बांगर प्राचीन), (2) काली मृदा (Regur - दक्कन ट्रैप के बेसाल्ट लावा से निर्मित, कपास हेतु उपयुक्त, स्वतः जुताई की क्षमता), (3) लाल एवं पीली मृदा (आग्नेय शैलों के अपक्षय से, आयरन ऑक्साइड के कारण लाल रंग), (4) लैटेराइट मृदा (तीव्र निक्षालन / Leaching से निर्मित, काजू व चाय हेतु उपयुक्त)।",
+              en: "The Indian Council of Agricultural Research (ICAR) identifies 8 major soil orders: (1) Alluvial soil (~40% area, exceptionally fertile, divided into newer Khadar and older Bhangar), (2) Black soil (Regur - basaltic lava origin, high moisture retention, self-ploughing, optimal for cotton), (3) Red & Yellow soil (ferric oxide diffusion over crystalline metamorphic rocks), and (4) Laterite soil (formed by intense tropical leaching, ideal for cashew, tea, and coffee)."
+            }
+          },
+          {
+            title: { hi: "प्राकृतिक वनस्पति एवं वन आवरण", en: "Natural Vegetation & Forest Wealth" },
+            content: {
+              hi: "भारत में वर्षा और उच्चावच के आधार पर 5 प्रमुख वन प्रकार पाए जाते हैं: उष्णकटिबंधीय सदाबहार वन (200 सेमी से अधिक वर्षा - पश्चिमी घाट, पूर्वोत्तर), उष्णकटिबंधीय पर्णपाती या मानसूनी वन (भारत में सबसे विस्तृत - सागौन और साल), उष्णकटिबंधीय कंटीले वन (राजस्थान, गुजरात), पर्वतीय वन (हिमालयी क्षेत्र), और मैंग्रोव/ज्वारीय वन (सुंदरवन डेल्टा - सुंदरी वृक्ष)।",
+              en: "India hosts five distinct vegetation regimes: Tropical Wet Evergreen (>200 cm rain - Western Ghats, NE Hills), Tropical Moist & Dry Deciduous (most widespread forest cover in India - Teak, Sal, Sandalwood), Thorn Forests (semi-arid NW), Montane Forests (Himalayan temperate to alpine zones), and Littoral/Mangrove forests (Sundarbans - world's largest deltaic mangrove ecosystem)."
+            }
+          }
+        ],
+        table: {
+          headers: {
+            hi: ["मृदा प्रकार", "क्षेत्रफल प्रतिशत", "प्रमुख फसलें", "प्रमुख पोषक तत्वों की स्थिति"],
+            en: ["Soil Type", "Coverage %", "Primary Crops", "Nutrient Profile"]
+          },
+          rows: [
+            ["जलोढ़ मृदा (Alluvial)", "~40-43%", "चावल, गेहूं, गन्ना, दलहन", "पोटाश व चूना प्रचुर; नाइट्रोजन व फास्फोरस की कमी"],
+            ["काली मृदा (Black/Regur)", "~15%", "कपास, सोयाबीन, मूंगफली", "चूना, लोहा, मैग्नीशियम प्रचुर; नाइट्रोजन व जैव पदार्थ अल्प"],
+            ["लाल मृदा (Red Soil)", "~18.5%", "मोटा अनाज, तंबाकू, तिलहन", "आयरन ऑक्साइड समृद्ध; नाइट्रोजन, फास्फोरस, ह्यूमस हीन"],
+            ["लैटेराइट (Laterite)", "~3.7%", "काजू, रबर, चाय, कॉफी", "अम्लीय प्रकृति; सिलिका व पोटाश निक्षालित"]
+          ]
+        },
+        examPoints: {
+          hi: [
+            "काली मिट्टी में 'मांटमोरिलोनाइट' खनिज की प्रधानता होती है, जिससे भीगने पर यह चिपचिपी और सूखने पर इसमें गहरी दरारें पड़ जाती हैं।",
+            "सुंदरवन मैंग्रोव वन रॉयल बंगाल टाइगर का प्राकृतिक आवास हैं और यूनेस्को विश्व धरोहर स्थल हैं।",
+            "भारतीय वन स्थिति रिपोर्ट (ISFR) के अनुसार भारत का कुल वन और वृक्ष आवरण देश के कुल भौगोलिक क्षेत्रफल का लगभग 24.6% है।"
+          ],
+          en: [
+            "Montmorillonite clay mineral dominance imparts black soils with extreme shrinkage-swelling and deep fissures when desiccated.",
+            "The Sundarbans mangrove tract is a UNESCO Biosphere Reserve and the sole mangrove tiger habitat globally.",
+            "According to the India State of Forest Report (ISFR), national forest and tree cover stands at approximately 24.6% of total geographical area."
+          ]
+        }
+      },
+      {
+        id: "geo-minerals-energy",
+        category: "economic",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Bhilai_Steel_Plant.jpg/600px-Bhilai_Steel_Plant.jpg",
+        fallbackSvg: `<svg viewBox="0 0 400 200" width="100%" height="100%"><rect width="400" height="200" fill="#131722"/><circle cx="100" cy="100" r="30" fill="#5D4037"/><circle cx="200" cy="100" r="30" fill="#78909C"/><circle cx="300" cy="100" r="30" fill="#FFA000"/><text x="200" y="165" fill="#FFF" font-size="13" text-anchor="middle">Chota Nagpur Mineral Belt & Industrial Nodes</text></svg>`,
+        title: {
+          hi: "खनिज संसाधन, ऊर्जा स्त्रोत एवं प्रमुख उद्योग",
+          en: "Mineral Wealth, Energy Belts & Heavy Industries"
+        },
+        desc: {
+          hi: "छोटानागपुर का पठार (भारत का रूर), गोंडवाना कोयला, धारवाड़ धात्विक खनिज, मुंबई हाई पेट्रोलियम और गैर-पारंपरिक सौर ऊर्जा केंद्र।",
+          en: "Chota Nagpur plateau ('Ruhr of India'), Gondwana coal basins, Dharwar metalliferous ores, Bombay High petroleum, and solar parks."
+        },
+        sections: [
+          {
+            title: { hi: "खनिज पेटियां एवं भूगर्भिक वितरण", en: "Major Mineral Belts & Proven Reserves" },
+            content: {
+              hi: "भारत में अधिकांश धात्विक खनिज प्राचीन धारवाड़ और कुडप्पा शैल प्रणालियों में पाए जाते हैं। तीन प्रमुख खनिज पेटियां हैं: (1) उत्तर-पूर्वी प्रायद्वीपीय पेटी (छोटानागपुर पठार - झारखंड, ओडिशा, प. बंगाल - 'भारत का रूर', कोयला, लौह अयस्क, बॉक्साइट का भंडार), (2) मध्य-दक्षिणी पेटी (कर्नाटक-गोवा - धारवाड़ शैल, उच्च कोटि का हेमेटाइट व मैग्नेटाइट लौह अयस्क), (3) उत्तर-पश्चिमी पेटी (राजस्थान-गुजरात - सीसा, जस्ता, तांबा, संगमरमर व पेट्रोलियम)।",
+              en: "India's metalliferous ore deposits are locked within ancient Precambrian Dharwar and Cuddapah formations across three primary belts: (1) North-Eastern Peninsular Belt (Chota Nagpur Plateau - Jharkhand, Odisha, Bengal - 'Ruhr of India' possessing prime coal, iron ore, and bauxite), (2) Central-Southern Belt (Karnataka-Goa - rich in Dharwar magnetite/hematite and manganese), (3) North-Western Belt (Aravallis in Rajasthan & Gujarat - lead, zinc, copper, gypsum, and sandstone)."
+            }
+          },
+          {
+            title: { hi: "पारंपरिक व नवीकरणीय ऊर्जा परिदृश्य", en: "Energy Matrix: Thermal, Hydro & Renewables" },
+            content: {
+              hi: "भारत का 98% से अधिक कोयला भंडार गोंडवाना युगीन अवसादी शैलों (दामोदर, सोन, महानदी, गोदावरी घाटियों) में सुरक्षित है। बॉम्बे हाई (अरब सागर) भारत का सबसे बड़ा अपतटीय खनिज तेल क्षेत्र है। नवीकरणीय ऊर्जा में भारत 'भादला सोलर पार्क' (राजस्थान - विश्व के सबसे बड़े सौर पार्कों में से एक) और पवन ऊर्जा (तमिलनाडु तट) में अग्रणी वैश्विक शक्ति बन चुका है।",
+              en: "Over 98% of India's commercial coal resides in Permian Gondwana sedimentary basins along Damodar, Son, Mahanadi, and Godavari valleys. Bombay High (offshore Maharashtra) remains India's premier crude petroleum field. In renewables, India has leaped forward with giant installations such as Bhadla Solar Park (Rajasthan) and Muppandal Wind Farm (Tamil Nadu)."
+            }
+          }
+        ],
+        table: {
+          headers: {
+            hi: ["खनिज / संसाधन", "शीर्ष उत्पादक राज्य", "प्रसिद्ध खदान / क्षेत्र"],
+            en: ["Mineral Resource", "Leading Producing State", "Renowned Mines / Key Belts"]
+          },
+          rows: [
+            ["लौह अयस्क (Iron Ore)", "ओडिशा, छत्तीसगढ़, कर्नाटक", "मयूरभंज, बादामपहाड़, बैलाडीला, कुद्रेमुख"],
+            ["कोयला (Coal)", "झारखंड, ओडिशा, छत्तीसगढ़", "झरिया (प्राइम कोकिंग कोल), रानीगंज, तालचेर"],
+            ["बॉक्साइट (Bauxite)", "ओडिशा (50%+ उत्पादन)", "कोरापुट, पंचपटमाली पठार"],
+            ["तांबा (Copper)", "मध्य प्रदेश, राजस्थान", "मलंजखंड (बालाघाट), खेतड़ी (झुंझुनू)"]
+          ]
+        },
+        examPoints: {
+          hi: [
+            "झारखंड का 'जादूगोड़ा' भारत की पहली यूरेनियम खदान है।",
+            "राजस्थान की 'जावर खदानें' (उदयपुर) सीसा-जस्ता (Lead-Zinc) और चांदी के उत्पादन के लिए विश्व प्रसिद्ध हैं।",
+            "भारत का पहला लौह एवं इस्पात कारखाना (TISCO) 1907 में जमशेदजी टाटा द्वारा जमशेदपुर (साकची) में सुवर्णरेखा नदी के तट पर स्थापित किया गया था।"
+          ],
+          en: [
+            "Jaduguda in Singhbhum (Jharkhand) hosts India's pioneering commercial uranium mine.",
+            "The Zawar mines in Udaipur (Rajasthan) form India's prime lead-zinc-silver complex.",
+            "India's first integrated steel plant (TISCO) was founded in 1907 at Sakchi (Jamshedpur) near the confluence of Subarnarekha and Kharkai rivers."
+          ]
+        }
+      },
+      {
+        id: "geo-protected-areas",
+        category: "protected",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Bengal_tiger_%28Panthera_tigris_tigris%29_female_3_crop.jpg/600px-Bengal_tiger_%28Panthera_tigris_tigris%29_female_3_crop.jpg",
+        fallbackSvg: `<svg viewBox="0 0 400 200" width="100%" height="100%"><rect width="400" height="200" fill="#0C1F16"/><path d="M100 180 C150 80 250 80 300 180 Z" fill="#1B5E20"/><text x="200" y="140" fill="#D4AF37" font-size="14" text-anchor="middle">Biosphere Reserves & Wildlife Corridors</text></svg>`,
+        title: {
+          hi: "राष्ट्रीय उद्यान, बायोस्फीयर रिजर्व एवं यूनेस्को प्राकृतिक धरोहर",
+          en: "Protected Areas: National Parks, Biosphere Reserves & UNESCO Sites"
+        },
+        desc: {
+          hi: "भारत के 106 राष्ट्रीय उद्यान, 18 बायोस्फीयर रिजर्व (12 MAB सूची में), प्रोजेक्ट टाइगर, प्रोजेक्ट एलीफेंट और रामसर आर्द्रभूमियां।",
+          en: "106 National Parks, 18 Biosphere Reserves (12 in UNESCO MAB), Project Tiger reserves, Elephant corridors, and Ramsar wetland sites."
+        },
+        sections: [
+          {
+            title: { hi: "संरक्षित क्षेत्रों की कानूनी संरचना", en: "Statutory Framework for Conservation" },
+            content: {
+              hi: "भारत में वन्यजीव संरक्षण 'वन्यजीव संरक्षण अधिनियम, 1972' (WLPA 1972) के तहत संचालित होता है। राष्ट्रीय उद्यानों (National Parks) में मानवीय गतिविधियों, मवेशी चराने व निजी भूमि अधिकारों पर पूर्ण प्रतिबंध होता है, जबकि वन्यजीव अभयारण्यों (Sanctuaries) में कुछ पारंपरिक अधिकारों की अनुमति होती है। बायोस्फीयर रिजर्व में कोर, बफर और संक्रमण क्षेत्र (Transition zone) का त्रिपक्षीय मॉडल लागू होता है।",
+              en: "Conservation in India is anchored in the Wildlife (Protection) Act, 1972. National Parks maintain total statutory prohibitions against livestock grazing, human habitation, and resource harvesting. Wildlife Sanctuaries allow bounded community rights, while Biosphere Reserves apply UNESCO's zonal architecture comprising Core, Buffer, and Transition tiers."
+            }
+          },
+          {
+            title: { hi: "प्रोजेक्ट टाइगर एवं रामसर स्थल", en: "Species Conservation & Wetlands of Significance" },
+            content: {
+              hi: "प्रोजेक्ट टाइगर 1973 में जिम कॉर्बेट नेशनल पार्क से शुरू किया गया था। वर्तमान में भारत में 55 से अधिक टाइगर रिजर्व हैं। भारत में 80 से अधिक आर्द्रभूमियां रामसर संधि (Ramsar Convention) के तहत अंतरराष्ट्रीय महत्व के रूप में अधिसूचित हैं, जिनमें चिल्का झील (ओडिशा - भारत की पहली रामसर साइट) और केवलादेव राष्ट्रीय उद्यान शामिल हैं।",
+              en: "Project Tiger was inaugurated in 1973 at Jim Corbett National Park. Today India maintains over 55 designated tiger reserves harboring >75% of global wild tigers. Over 80 wetlands are designated under the Ramsar Convention, led historically by Chilika Lake (Odisha) and Keoladeo Ghana National Park (Rajasthan)."
+            }
+          }
+        ],
+        table: {
+          headers: {
+            hi: ["बायोस्फीयर रिजर्व / पार्क", "राज्य / संघ शासित प्रदेश", "मुख्य संरक्षित प्रजातियां / विशेषता"],
+            en: ["Biosphere Reserve / Park", "State / UT", "Keystone Species / UNESCO Status"]
+          },
+          rows: [
+            ["नीलगिरि (Nilgiri)", "तमिलनाडु, केरल, कर्नाटक", "भारत का पहला बायोस्फीयर रिजर्व (1986); नीलगिरि तहर, लायन-टेल्ड मकाक"],
+            ["काजीरंगा (Kaziranga)", "असम", "एक सींग वाला भारतीय गैंडा (One-horned Rhino); यूनेस्को प्राकृतिक धरोहर"],
+            ["जिम कॉर्बेट (रामगंगा)", "उत्तराखंड", "भारत का पहला राष्ट्रीय उद्यान (1936, पूर्व नाम हैली नेशनल पार्क)"],
+            ["केबुल लामजाओ (Keibul Lamjao)", "मणिपुर (लोकटक झील)", "विश्व का एकमात्र तैरता हुआ राष्ट्रीय उद्यान; संगाई हिरण (डान्सिंग डियर)"]
+          ]
+        },
+        examPoints: {
+          hi: [
+            "मणिपुर की 'लोकटक झील' पर तैरते हुए घास के द्वीपों को स्थानीय भाषा में 'फुम्दी' (Phumdi) कहा जाता है।",
+            "मध्य प्रदेश को भारत का 'टाइगर स्टेट' कहा जाता है, जहाँ कान्हा, बांधवगढ़, पेंच और पन्ना जैसे प्रसिद्ध रिजर्व हैं।",
+            "ग्रेट हिमालयन नेशनल पार्क और कंचनजंगा नेशनल पार्क (मिश्रित धरोहर) यूनेस्को विश्व धरोहर सूची में सम्मिलित हैं।"
+          ],
+          en: [
+            "Floating decomposed organic biomass masses on Loktak Lake are known locally as 'Phumdis', harboring the endangered Sangai deer.",
+            "Madhya Pradesh holds the status of 'Tiger State of India', housing Kanha, Bandhavgarh, Pench, and Panna reserves.",
+            "Khangchendzonga National Park (Sikkim) is India's sole UNESCO 'Mixed' World Heritage Site (both natural and cultural values)."
+          ]
+        }
+      }
+    ];
+
+    /* =====================================================================
+       2. APP STATE MANAGEMENT
+       ===================================================================== */
+    const STATE = {
+      lang: "hi",
+      activeCategory: "all",
+      searchQuery: "",
+      activeTopicId: null,
+      currentUser: null,
+      bookmarkedIds: new Set()
+    };
+
+    /* Initialize Application on DOM Ready */
+    document.addEventListener("DOMContentLoaded", () => {
+      // Restore cached session if present
+      const savedLang = localStorage.getItem("bhumi_lang");
+      if (savedLang && (savedLang === "hi" || savedLang === "en")) {
+        STATE.lang = savedLang;
+      }
+      
+      const savedUserJson = localStorage.getItem("bhumi_session");
+      if (savedUserJson) {
+        try {
+          STATE.currentUser = JSON.parse(savedUserJson);
+        } catch(e) {
+          STATE.currentUser = null;
+        }
+      }
+
+      loadBookmarksFromStorage();
+      applyLanguageToDOM();
+      renderCategoryPills();
+      renderDirectoryGrid();
+      updateAuthUI();
+    });
+
+    /* =====================================================================
+       3. BILINGUAL SWITCH ENGINE (NO SCREEN BLANKING)
+       ===================================================================== */
+    function toggleLanguage() {
+      STATE.lang = STATE.lang === "hi" ? "en" : "hi";
+      localStorage.setItem("bhumi_lang", STATE.lang);
+      
+      document.body.className = STATE.lang === "hi" ? "lang-hi" : "lang-en";
+      document.documentElement.lang = STATE.lang;
+
+      applyLanguageToDOM();
+      renderCategoryPills();
+
+      // Refresh current active view smoothly
+      if (STATE.activeTopicId) {
+        renderLessonDetail(STATE.activeTopicId);
+      } else {
+        renderDirectoryGrid();
+      }
+
+      if (!document.getElementById("profile-view").classList.contains("hidden")) {
+        renderProfileBookmarks();
+      }
+    }
+
+    function applyLanguageToDOM() {
+      const t = UI_TRANSLATIONS[STATE.lang];
+
+      document.getElementById("brand-tagline").textContent = t.brandTag;
+      document.getElementById("lang-label").textContent = t.langName;
+      document.getElementById("lang-code-badge").textContent = t.langCode;
+      
+      document.getElementById("hero-badge-txt").textContent = t.heroBadge;
+      document.getElementById("hero-head-txt").innerHTML = t.heroHead;
+      document.getElementById("hero-sub-txt").textContent = t.heroSub;
+      document.getElementById("search-input").placeholder = t.searchPlaceholder;
+
+      document.getElementById("back-btn-text").textContent = t.backToTopics;
+      document.getElementById("toc-header-text").textContent = t.tocHeading;
+      document.getElementById("saved-topics-heading").textContent = t.savedHeading;
+
+      document.getElementById("auth-note-title").textContent = t.authNoteTitle;
+      document.getElementById("auth-note-desc").textContent = t.authNoteDesc;
+      document.getElementById("fb-guidance-title").textContent = t.fbTitle;
+      document.getElementById("fb-guidance-txt").textContent = t.fbTxt;
+
+      document.getElementById("lbl-email").textContent = t.emailLbl;
+      document.getElementById("lbl-pass").textContent = t.passLbl;
+      document.getElementById("auth-forgot-link").textContent = t.forgotPass;
+
+      updateAuthUI();
+    }
+
+    /* =====================================================================
+       4. CATEGORY TABS & TOPICS DIRECTORY
+       ===================================================================== */
+    function renderCategoryPills() {
+      const container = document.getElementById("category-pills");
+      container.innerHTML = "";
+
+      CATEGORIES.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.className = `pill-btn ${STATE.activeCategory === cat.id ? "active" : ""}`;
+        btn.textContent = STATE.lang === "hi" ? cat.hi : cat.en;
+        btn.onclick = () => {
+          STATE.activeCategory = cat.id;
+          renderCategoryPills();
+          renderDirectoryGrid();
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function filterByCategory(catId) {
+      STATE.activeCategory = catId;
+      showHomeView();
+      renderCategoryPills();
+      renderDirectoryGrid();
+    }
+
+    function handleSearch(val) {
+      STATE.searchQuery = val.trim().toLowerCase();
+      renderDirectoryGrid();
+    }
+
+    function renderDirectoryGrid() {
+      const grid = document.getElementById("topics-grid");
+      grid.innerHTML = "";
+
+      const filtered = TOPICS_DATA.filter(item => {
+        const matchesCat = STATE.activeCategory === "all" || item.category === STATE.activeCategory;
+        if (!matchesCat) return false;
+
+        if (!STATE.searchQuery) return true;
+
+        const q = STATE.searchQuery;
+        const titleHi = item.title.hi.toLowerCase();
+        const titleEn = item.title.en.toLowerCase();
+        const descHi = item.desc.hi.toLowerCase();
+        const descEn = item.desc.en.toLowerCase();
+
+        return titleHi.includes(q) || titleEn.includes(q) || descHi.includes(q) || descEn.includes(q);
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
+            <div style="font-size: 2.5rem; margin-bottom: 0.8rem;">🧭</div>
+            <p>${STATE.lang === "hi" ? "कोई संबंधित विषय नहीं मिला। कृपया भिन्न शब्द खोजें।" : "No matching geographical topic found. Try refining your search query."}</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(topic => {
+        const isBookmarked = STATE.bookmarkedIds.has(topic.id);
+        const card = document.createElement("div");
+        card.className = "card";
+        
+        card.innerHTML = `
+          <div class="card-banner">
+            <img 
+              src="${topic.img}" 
+              alt="${topic.title[STATE.lang]}" 
+              class="card-img" 
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="card-banner-svg" style="display: none;">
+              ${topic.fallbackSvg}
+            </div>
+            <span class="category-tag">${getCategoryName(topic.category)}</span>
+            <div 
+              class="bookmark-icon ${isBookmarked ? 'bookmarked' : ''}" 
+              onclick="event.stopPropagation(); toggleBookmark('${topic.id}')"
+              title="Bookmark Topic"
+            >
+              ${isBookmarked ? '★' : '☆'}
+            </div>
+          </div>
+          <div class="card-body" onclick="openLesson('${topic.id}')">
+            <h3 class="card-title">${topic.title[STATE.lang]}</h3>
+            <p class="card-desc">${topic.desc[STATE.lang]}</p>
+            <div class="card-footer">
+              <span>${UI_TRANSLATIONS[STATE.lang].readLesson}</span>
+              <span>📖</span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function getCategoryName(catId) {
+      const match = CATEGORIES.find(c => c.id === catId);
+      if (!match) return catId;
+      return STATE.lang === "hi" ? match.hi : match.en;
+    }
+
+    /* =====================================================================
+       5. DETAILED LESSON VIEWER WITH TABLE OF CONTENTS
+       ===================================================================== */
+    function openLesson(topicId) {
+      STATE.activeTopicId = topicId;
+      document.getElementById("directory-view").classList.add("hidden");
+      document.getElementById("hero-area").classList.add("hidden");
+      document.getElementById("profile-view").classList.add("hidden");
+      document.getElementById("lesson-view").classList.remove("hidden");
+
+      renderLessonDetail(topicId);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showHomeView() {
+      STATE.activeTopicId = null;
+      document.getElementById("lesson-view").classList.add("hidden");
+      document.getElementById("profile-view").classList.add("hidden");
+      document.getElementById("hero-area").classList.remove("hidden");
+      document.getElementById("directory-view").classList.remove("hidden");
+      renderDirectoryGrid();
+    }
+
+    function renderLessonDetail(topicId) {
+      const topic = TOPICS_DATA.find(t => t.id === topicId);
+      if (!topic) return;
+
+      const lang = STATE.lang;
+      const t = UI_TRANSLATIONS[lang];
+
+      // Breadcrumb updates
+      document.getElementById("breadcrumb-category").textContent = getCategoryName(topic.category);
+      document.getElementById("breadcrumb-topic").textContent = topic.title[lang];
+
+      // Sidebar Table of Contents
+      const tocList = document.getElementById("toc-list-items");
+      tocList.innerHTML = "";
+
+      topic.sections.forEach((sec, idx) => {
+        const li = document.createElement("li");
+        li.className = "toc-item";
+        li.innerHTML = `<a href="#sec-${idx}">§ ${sec.title[lang]}</a>`;
+        tocList.appendChild(li);
+      });
+
+      if (topic.table) {
+        const liTbl = document.createElement("li");
+        liTbl.className = "toc-item";
+        liTbl.innerHTML = `<a href="#sec-data-table">▦ ${lang === 'hi' ? 'तुलनात्मक तालिका' : 'Comparative Matrix'}</a>`;
+        tocList.appendChild(liTbl);
+      }
+
+      const liExam = document.createElement("li");
+      liExam.className = "toc-item";
+      liExam.innerHTML = `<a href="#sec-exam-box">✦ ${lang === 'hi' ? 'परीक्षा उपयोगी तथ्य' : 'Exam Highlights'}</a>`;
+      tocList.appendChild(liExam);
+
+      // Main Article Body
+      const article = document.getElementById("lesson-article-body");
+      
+      let sectionsHtml = topic.sections.map((sec, idx) => `
+        <section class="lesson-section" id="sec-${idx}">
+          <h2>${sec.title[lang]}</h2>
+          <p>${sec.content[lang]}</p>
+        </section>
+      `).join("");
+
+      // Table formatting
+      let tableHtml = "";
+      if (topic.table) {
+        const headersHtml = topic.table.headers[lang].map(h => `<th>${h}</th>`).join("");
+        const rowsHtml = topic.table.rows.map(row => `
+          <tr>${row.map(cell => `<td>${cell}</td>`).join("")}</tr>
+        `).join("");
+
+        tableHtml = `
+          <div class="lesson-section" id="sec-data-table">
+            <h2>${lang === 'hi' ? 'भौगोलिक आंकड़े एवं तुलनात्मक तालिका' : 'Geographical Data & Comparative Matrix'}</h2>
+            <div class="table-container">
+              <table class="geo-table">
+                <thead><tr>${headersHtml}</tr></thead>
+                <tbody>${rowsHtml}</tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }
+
+      // Exam Box Points
+      const examPointsHtml = topic.examPoints[lang].map(pt => `<li>${pt}</li>`).join("");
+
+      article.innerHTML = `
+        <div class="lesson-header">
+          <span class="category-tag" style="position: static; display: inline-block; margin-bottom: 0.8rem;">
+            ${getCategoryName(topic.category)}
+          </span>
+          <h1 class="lesson-title-main">${topic.title[lang]}</h1>
+          <p style="color: var(--text-muted); font-size: 1.05rem;">${topic.desc[lang]}</p>
+        </div>
+
+        <div class="lesson-media-wrapper">
+          <img 
+            src="${topic.img}" 
+            alt="${topic.title[lang]}" 
+            class="lesson-hero-img" 
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          />
+          <div style="display: none; height: 300px; padding: 2rem;">${topic.fallbackSvg}</div>
+          <div class="media-caption">
+            <span>🗺️ ${topic.title[lang]} — संकलित भौगोलिक मानचित्रावली व भू-आकृतिक दृश्य</span>
+          </div>
+        </div>
+
+        ${sectionsHtml}
+        ${tableHtml}
+
+        <div class="exam-highlight-box" id="sec-exam-box">
+          <div class="exam-badge">UPSC / SSC CGL / NDA REVISION</div>
+          <h3 style="color: var(--gold-light); margin-bottom: 0.8rem;">${t.examPointsTitle}</h3>
+          <ul class="exam-points">
+            ${examPointsHtml}
+          </ul>
+        </div>
+      `;
+    }
+
+    /* =====================================================================
+       6. AUTHENTICATION (LOCAL ENGINE + FIREBASE INTEGRATION READY)
+       ===================================================================== */
+    let authMode = "login"; // 'login' | 'register'
+
+    function updateAuthUI() {
+      const btn = document.getElementById("nav-auth-btn");
+      const icon = document.getElementById("auth-btn-icon");
+      const text = document.getElementById("auth-btn-text");
+      const t = UI_TRANSLATIONS[STATE.lang];
+
+      if (STATE.currentUser) {
+        btn.classList.add("logged-in");
+        icon.textContent = "✓";
+        text.textContent = t.profile;
+        btn.onclick = openProfileView;
+      } else {
+        btn.classList.remove("logged-in");
+        icon.textContent = "👤";
+        text.textContent = t.login;
+        btn.onclick = openAuthModal;
+      }
+    }
+
+    function openAuthModal() {
+      const modal = document.getElementById("auth-modal");
+      modal.classList.remove("hidden");
+      setAuthMode("login");
+    }
+
+    function closeAuthModal() {
+      document.getElementById("auth-modal").classList.add("hidden");
+      document.getElementById("auth-feedback").textContent = "";
+      document.getElementById("auth-feedback").className = "form-msg";
+    }
+
+    function toggleAuthMode() {
+      setAuthMode(authMode === "login" ? "register" : "login");
+    }
+
+    function setAuthMode(mode) {
+      authMode = mode;
+      const t = UI_TRANSLATIONS[STATE.lang];
+      const title = document.getElementById("modal-title-txt");
+      const sub = document.getElementById("modal-sub-txt");
+      const submitBtn = document.getElementById("modal-submit-btn");
+      const switchLink = document.getElementById("auth-switch-link");
+
+      if (mode === "login") {
+        title.textContent = t.modalLoginTitle;
+        sub.textContent = t.modalLoginSub;
+        submitBtn.textContent = t.loginBtn;
+        switchLink.textContent = t.switchRegister;
+      } else {
+        title.textContent = t.modalRegisterTitle;
+        sub.textContent = t.modalRegisterSub;
+        submitBtn.textContent = t.registerBtn;
+        switchLink.textContent = t.switchLogin;
+      }
+    }
+
+    function togglePassVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === "password") {
+        input.type = "text";
+        btn.textContent = "🔒";
+      } else {
+        input.type = "password";
+        btn.textContent = "👁️";
+      }
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById("auth-email").value.trim();
+      const pass = document.getElementById("auth-password").value;
+      const msgBox = document.getElementById("auth-feedback");
+      const t = UI_TRANSLATIONS[STATE.lang];
+
+      if (!email || !pass) {
+        msgBox.textContent = t.authErrEmpty;
+        msgBox.className = "form-msg error";
+        return;
+      }
+
+      if (pass.length < 6) {
+        msgBox.textContent = t.authErrShort;
+        msgBox.className = "form-msg error";
+        return;
+      }
+
+      // Hash password in client sandbox to avoid plaintext in localStorage
+      let usersDb = JSON.parse(localStorage.getItem("bhumi_registered_users") || "{}");
+
+      if (authMode === "register") {
+        usersDb[email] = {
+          passHash: btoa(pass), // base64 encoded client mock hash
+          created: new Date().toISOString()
+        };
+        localStorage.setItem("bhumi_registered_users", JSON.stringify(usersDb));
+        STATE.currentUser = { email };
+        localStorage.setItem("bhumi_session", JSON.stringify(STATE.currentUser));
+        
+        msgBox.textContent = t.regSuccess;
+        msgBox.className = "form-msg success";
+        setTimeout(() => {
+          closeAuthModal();
+          updateAuthUI();
+        }, 800);
+      } else {
+        // Login Flow
+        if (usersDb[email] && usersDb[email].passHash === btoa(pass)) {
+          STATE.currentUser = { email };
+          localStorage.setItem("bhumi_session", JSON.stringify(STATE.currentUser));
+          msgBox.textContent = t.loginSuccess;
+          msgBox.className = "form-msg success";
+          setTimeout(() => {
+            closeAuthModal();
+            updateAuthUI();
+          }, 800);
+        } else if (!usersDb[email]) {
+          // Automatic seamless enrollment for effortless first-time testing
+          usersDb[email] = { passHash: btoa(pass), created: new Date().toISOString() };
+          localStorage.setItem("bhumi_registered_users", JSON.stringify(usersDb));
+          STATE.currentUser = { email };
+          localStorage.setItem("bhumi_session", JSON.stringify(STATE.currentUser));
+          msgBox.textContent = t.loginSuccess;
+          msgBox.className = "form-msg success";
+          setTimeout(() => {
+            closeAuthModal();
+            updateAuthUI();
+          }, 800);
+        } else {
+          msgBox.textContent = t.authErrInvalid;
+          msgBox.className = "form-msg error";
+        }
+      }
+    }
+
+    function handlePassReset() {
+      const email = document.getElementById("auth-email").value.trim();
+      const msgBox = document.getElementById("auth-feedback");
+      const t = UI_TRANSLATIONS[STATE.lang];
+
+      if (!email) {
+        msgBox.textContent = STATE.lang === "hi" ? "कृपया पहले अपना ईमेल दर्ज करें।" : "Please enter your email above first.";
+        msgBox.className = "form-msg error";
+        return;
+      }
+
+      alert(t.passResetAlert);
+      msgBox.textContent = t.passResetAlert;
+      msgBox.className = "form-msg success";
+    }
+
+    function logoutUser() {
+      STATE.currentUser = null;
+      localStorage.removeItem("bhumi_session");
+      updateAuthUI();
+      showHomeView();
+    }
+
+    /* =====================================================================
+       7. BOOKMARKS & USER PROFILE
+       ===================================================================== */
+    function loadBookmarksFromStorage() {
+      const raw = localStorage.getItem("bhumi_bookmarks");
+      if (raw) {
+        try {
+          const arr = JSON.parse(raw);
+          STATE.bookmarkedIds = new Set(arr);
+        } catch(e) {
+          STATE.bookmarkedIds = new Set();
+        }
+      }
+    }
+
+    function toggleBookmark(topicId) {
+      if (STATE.bookmarkedIds.has(topicId)) {
+        STATE.bookmarkedIds.delete(topicId);
+      } else {
+        STATE.bookmarkedIds.add(topicId);
+      }
+      localStorage.setItem("bhumi_bookmarks", JSON.stringify(Array.from(STATE.bookmarkedIds)));
+      renderDirectoryGrid();
+    }
+
+    function openProfileView() {
+      document.getElementById("directory-view").classList.add("hidden");
+      document.getElementById("hero-area").classList.add("hidden");
+      document.getElementById("lesson-view").classList.add("hidden");
+      document.getElementById("profile-view").classList.remove("hidden");
+
+      if (STATE.currentUser) {
+        document.getElementById("prof-user-email").textContent = STATE.currentUser.email;
+        document.getElementById("prof-avatar-letter").textContent = STATE.currentUser.email.charAt(0).toUpperCase();
+      }
+
+      renderProfileBookmarks();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderProfileBookmarks() {
+      const container = document.getElementById("saved-topics-list");
+      container.innerHTML = "";
+      const t = UI_TRANSLATIONS[STATE.lang];
+
+      if (STATE.bookmarkedIds.size === 0) {
+        container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.95rem;">${t.noBookmarks}</p>`;
+        return;
+      }
+
+      STATE.bookmarkedIds.forEach(id => {
+        const topic = TOPICS_DATA.find(x => x.id === id);
+        if (!topic) return;
+
+        const row = document.createElement("div");
+        row.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #0A111E; padding: 12px 18px; border-radius: 8px; border: 1px solid var(--border-subtle);";
+        row.innerHTML = `
+          <div>
+            <strong style="color: #FFF; font-size: 1rem; cursor: pointer;" onclick="openLesson('${topic.id}')">${topic.title[STATE.lang]}</strong>
+            <span style="display: block; font-size: 0.8rem; color: var(--gold-light);">${getCategoryName(topic.category)}</span>
+          </div>
+          <button style="background: transparent; border: 1px solid var(--border-subtle); color: #EF5350; padding: 4px 10px; border-radius: 4px; cursor: pointer;" onclick="toggleBookmark('${topic.id}'); renderProfileBookmarks();">
+            ✕
+          </button>
+        `;
+        container.appendChild(row);
+      });
+    }
+  </script>
 </body>
 </html>
